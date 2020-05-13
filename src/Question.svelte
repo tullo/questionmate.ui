@@ -72,7 +72,9 @@
 		</button>
 	{/if}
 	{#if recommendations !== undefined}
-		<h2>Deine Empfehlungen (emotional)</h2>
+	<div>
+		<div style="float:left;width:600px">
+		<h2>Emotional</h2>
 		{#each recommendations.emotional as r}
 			<h3>{r.type}: {r.score}</h3>
 			{#if r.proofpoints !== undefined}
@@ -85,7 +87,9 @@
 				</ol>
 			{/if}
 		{/each}
-		<h2>Deine Empfehlungen (rational)</h2>
+		</div>
+		<div style="float:left;width:600px">
+		<h2>Rational</h2>
 		{#each recommendations.rational as r}
 			<h3>{r.type}: {r.score}</h3>
 			{#if r.proofpoints !== undefined}
@@ -98,5 +102,7 @@
 				</ol>
 			{/if}
 		{/each}
+		</div>
+	</div>
 	{/if}
 </question>
