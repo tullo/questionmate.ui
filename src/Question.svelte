@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	export let url;
 	export let question;
+	export let recommendations;
 	let selected = 0;
 	let answers = {
 		"userId": "23",
@@ -10,7 +11,7 @@
 	}
 
 	onMount(async function() {
-		const response = await fetch(url,
+		const response = await fetch(url + '/questions',
 		{
 			method: 'POST',
 			body: JSON.stringify(answers)
@@ -19,7 +20,7 @@
 	});
 	
 	async function nextQuestion(params) {
-		const response = await fetch(url,
+		const response = await fetch(url + '/questions',
 		{
 			method: 'POST',
 			body: JSON.stringify(answers)
@@ -27,7 +28,19 @@
 		if (response.status === 200) {
 			question = await response.json();		
 		} else {
-			alert("Your recommendations .")
+			getRecommendations()
+		}
+	}
+
+	async function getRecommendations(params) {
+		const response = await fetch(url + '/recommendations?expand=proofpoints',
+		{
+			method: 'POST',
+			body: JSON.stringify(answers)
+		});
+		if (response.status === 200) {
+			question = undefined
+			recommendations = await response.json();		
 		}
 	}
 
@@ -57,5 +70,33 @@
 		<button on:click|once={handleSelect}>
 			Next
 		</button>
+	{/if}
+	{#if recommendations !== undefined}
+		<h2>Deine Empfehlungen (emotional)</h2>
+		{#each recommendations.emotional as r}
+			<h3>{r.type}: {r.score}</h3>
+			{#if r.proofpoints !== undefined}
+				<ol>
+					{#each r.proofpoints as pp}
+					<li>
+						{pp.label}
+					</li>
+					{/each}
+				</ol>
+			{/if}
+		{/each}
+		<h2>Deine Empfehlungen (rational)</h2>
+		{#each recommendations.rational as r}
+			<h3>{r.type}: {r.score}</h3>
+			{#if r.proofpoints !== undefined}
+				<ol>
+					{#each r.proofpoints as pp}
+					<li>
+						{pp.label}
+					</li>
+					{/each}
+				</ol>
+			{/if}
+		{/each}
 	{/if}
 </question>
