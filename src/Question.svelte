@@ -6,7 +6,7 @@
 
   export let url = "";
   export let question = null;
-  let selected = 0;
+  let choice = 0;
   let answers = {
     userId: "23",
     tenant: "vw-rw",
@@ -18,7 +18,9 @@
       method: "POST",
       body: JSON.stringify(answers)
     });
-    question = await response.json();
+    if (response.status === 200) {
+      question = await response.json();
+    }
   });
 
   async function nextQuestion(params) {
@@ -38,10 +40,10 @@
   function handleNext(event) {
     answers.answers.push({
       questionId: question.questionId,
-      value: selected
+      value: choice
     });
     nextQuestion();
-    selected = 0;
+    choice = 0;
     question = null;
   }
 </script>
@@ -53,7 +55,7 @@
       {#each question.options as o}
         <li style="list-style-type: none">
           <label>
-            <input type="radio" value={o.value} bind:group={selected} />
+            <input type="radio" value={o.value} bind:group={choice} />
             {o.label}
           </label>
         </li>
