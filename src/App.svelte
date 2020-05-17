@@ -1,6 +1,6 @@
 <script>
   import Question from "./Question.svelte";
-  import Recommendations from "./Recommendations.svelte";
+  import Recommendations from "./Recommendation.svelte";
 
   let url = 'https://dc-dev.nediscerecessa.de/dc/engine'
   let recommendations = null;
@@ -23,5 +23,5 @@
 <main>
   <h1>VW Drive Consultant</h1>
   <Question on:fetchRecommendations={handleFetchRecommendations} url={url} />
-  <Recommendations recommendations={recommendations} />
+  <Recommendations recommendation={recommendations} />
 </main>
