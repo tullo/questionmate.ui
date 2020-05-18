@@ -61,6 +61,6 @@
         </li>
       {/each}
     </ul>
-    <button on:click|once={handleNext}>Next</button>
+    <button on:click|once={handleNext} disabled='{choice === 0}'>Next</button>
   {/if}
 </question>
