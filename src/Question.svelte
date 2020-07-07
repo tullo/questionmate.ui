@@ -21,7 +21,7 @@
     }
   });
 
-  async function nextQuestion(params) {
+  async function nextQuestion() {
     const response = await fetch(url + "/questions", {
       method: "POST",
       body: JSON.stringify(answers)
@@ -29,7 +29,7 @@
     if (response.status === 200) {
       question = await response.json();
     } else {
-      dispatch("fetchRecommendations", {
+      dispatch("fetchEvaluation", {
         answers: answers
       });
     }

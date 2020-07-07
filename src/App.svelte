@@ -1,27 +1,27 @@
 <script>
   import Question from "./Question.svelte";
-  import Recommendations from "./Recommendation.svelte";
+  import Evaluation from "./Evaluation.svelte";
 
   let url = 'http://localhost:8080'
-  let recommendations = null;
+  let evaluation = null;
 
-  function handleFetchRecommendations(event) {
-    getRecommendations(event.detail.answers);
+  function handleFetchEvaluation(event) {
+    getEvaluation(event.detail.answers);
   }
 
-  async function getRecommendations(answers) {
-    const response = await fetch(url + "/recommendations?expand=proofpoints", {
+  async function getEvaluation(answers) {
+    const response = await fetch(url + "/evaluations", {
       method: "POST",
       body: JSON.stringify(answers)
     });
     if (response.status === 200) {
-      recommendations = await response.json();
+      evaluation = await response.json();
     }
   }
 </script>
 
 <main>
   <h1>Questionmate - LegacyLab</h1>
-  <Question on:fetchRecommendations={handleFetchRecommendations} url={url} />
-  <Recommendations recommendation={recommendations} />
+  <Question on:fetchRecommendations={handleFetchEvaluation} url={url} />
+  <Evaluation evaluation={Evaluation} />
 </main>
