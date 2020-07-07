@@ -37,7 +37,7 @@
 
   function handleNext(event) {
     answers.answers.push({
-      questionId: question.questionId,
+      question_id: question.id,
       value: choice
     });
     nextQuestion();
@@ -48,7 +48,7 @@
 
 <question>
   {#if question !== null}
-    <h2>{question.text}</h2>
+    <h3>{question.text}</h3>
     <ul>
       {#each question.options as o}
         <li style="list-style-type: none">
