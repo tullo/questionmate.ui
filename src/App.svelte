@@ -2,7 +2,7 @@
   import Question from "./Question.svelte";
   import Recommendations from "./Recommendation.svelte";
 
-  let url = 'https://dc-dev.nediscerecessa.de/dc/engine'
+  let url = 'http://localhost:8080'
   let recommendations = null;
 
   function handleFetchRecommendations(event) {
@@ -21,7 +21,7 @@
 </script>
 
 <main>
-  <h1>VW Drive Consultant</h1>
+  <h1>Questionmate - LegacyLab</h1>
   <Question on:fetchRecommendations={handleFetchRecommendations} url={url} />
   <Recommendations recommendation={recommendations} />
 </main>

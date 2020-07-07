@@ -8,8 +8,6 @@
   export let question = null;
   let choice = 0;
   let answers = {
-    userId: "23",
-    tenant: "vw-rw",
     answers: []
   };
 
@@ -50,13 +48,13 @@
 
 <question>
   {#if question !== null}
-    <h2>Frage: {question.label}</h2>
+    <h2>{question.text}</h2>
     <ul>
       {#each question.options as o}
         <li style="list-style-type: none">
           <label>
             <input type="radio" value={o.value} bind:group={choice} />
-            {o.label}
+            {o.text}
           </label>
         </li>
       {/each}
