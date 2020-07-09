@@ -1,11 +1,12 @@
 <script>
-  import Targets from "./Targets.svelte";
-  export let evaluation = null;
+    import Targets from "./Targets.svelte";
+
+    export let evaluation = null;
 </script>
 
 <assessment>
-  <h2>Your Evaluation</h2>
-  {#if evaluation !== null}
-    <Targets targets={evaluation.targets} />
-  {/if}
+    {#if evaluation !== null}
+        <h2>Your Evaluation</h2>
+        <Targets targets={evaluation.targets}/>
+    {/if}
 </assessment>
