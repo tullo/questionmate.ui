@@ -7,6 +7,7 @@
     export let url = "";
     export let question = null;
     let choice = 0;
+    let descVisible = false;
     let answers = {
         answers: []
     };
@@ -43,12 +44,24 @@
         nextQuestion();
         choice = 0;
         question = null;
+        descVisible = false;
+    }
+
+    function toggleDescVisible() {
+        descVisible = !descVisible
     }
 </script>
 
 <question>
     {#if question !== null}
         <h3>{question.text}</h3>
+        {#if question.desc !== null && question.desc !== ""}
+            <a hidden='{descVisible}' on:click={toggleDescVisible}>Mehr...</a>
+            <a hidden='{!descVisible}' on:click={toggleDescVisible}>Schließen</a>
+            <p hidden='{!descVisible}'>
+                {question.desc}
+            </p>
+        {/if}
         <ul>
             {#each question.options as o}
                 <li style="list-style-type: none">
