@@ -56,8 +56,8 @@
     {#if question !== null}
         <h3>{question.text}</h3>
         {#if question.desc !== null && question.desc !== ""}
-            <a hidden='{descVisible}' on:click={toggleDescVisible}>Mehr...</a>
-            <a hidden='{!descVisible}' on:click={toggleDescVisible}>Schließen</a>
+            <span hidden='{descVisible}' on:click={toggleDescVisible}>[Mehr]</span>
+            <span hidden='{!descVisible}' on:click={toggleDescVisible}>[Schließen]</span>
             <p hidden='{!descVisible}'>
                 {question.desc}
             </p>

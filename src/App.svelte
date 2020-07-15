@@ -21,7 +21,7 @@
 </script>
 
 <main>
-    <h1>Questionmate - LegacyLab</h1>
+    <h1>Questionmatex - LegacyLab</h1>
     <Question on:fetchEvaluation={handleFetchEvaluation} url={url}/>
     <Evaluation evaluation={evaluation}/>
 </main>
