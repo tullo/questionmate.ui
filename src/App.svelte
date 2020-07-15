@@ -1,6 +1,7 @@
 <script>
     import Question from "./Question.svelte";
     import Evaluation from "./Evaluation.svelte";
+    import 'bulma/css/bulma.css'
 
     let url = 'http://localhost:8080'
     let evaluation = null;
@@ -20,8 +21,8 @@
     }
 </script>
 
-<main>
-    <h1>Questionmatex - LegacyLab</h1>
+<main class="section">
+    <h1 class="title is-1">Questionmate - LegacyLab</h1>
     <Question on:fetchEvaluation={handleFetchEvaluation} url={url}/>
     <Evaluation evaluation={evaluation}/>
 </main>

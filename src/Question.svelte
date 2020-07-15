@@ -7,7 +7,7 @@
     export let url = "";
     export let question = null;
     let choice = 0;
-    let descVisible = false;
+    let descVisible = "is-hidden";
     let answers = {
         answers: []
     };
@@ -52,15 +52,24 @@
     }
 </script>
 
-<question>
+<question class="content">
     {#if question !== null}
-        <h3>{question.text}</h3>
+        <h3 class="title is-6">{question.text}</h3>
         {#if question.desc !== null && question.desc !== ""}
-            <span hidden='{descVisible}' on:click={toggleDescVisible}>[Mehr]</span>
-            <span hidden='{!descVisible}' on:click={toggleDescVisible}>[Schließen]</span>
-            <p hidden='{!descVisible}'>
-                {question.desc}
-            </p>
+        <!-- svelte-ignore a11y-missing-attribute -->
+            <a hidden='{!descVisible}' on:click={toggleDescVisible}>Erklärung der Frage...</a>
+            {#if !descVisible}
+                <article class="message">
+                    <div class="message-header">
+                        Folgendes steckt hinter der Frage
+                        <button class="delete" aria-label="delete" on:click={toggleDescVisible}></button>
+                    </div>
+                    <div class="message-body">
+                        {question.desc}
+                    </div>
+                </article>
+            {/if}
+                <!-- svelte-ignore a11y-missing-attribute -->
         {/if}
         <ul>
             {#each question.options as o}
