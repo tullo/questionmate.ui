@@ -8,14 +8,13 @@
     }
 </style>
 
-<targets>
+<targets class="content">
     {#if targets !== null}
-        <div>
-            <div style="float:left;width:500px">
-                {#each targets as t}
-                    <h5>{t.text}: {t.score}</h5>
-                {/each}
-            </div>
-        </div>
+        {#each targets as t}
+            <p>
+                {t.text}
+                <progress class="progress is-primary" value="{t.score}" max="100"></progress>
+            </p>
+        {/each}
     {/if}
 </targets>
