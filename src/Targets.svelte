@@ -12,8 +12,7 @@
     {#if targets !== null}
         {#each targets as t}
             <p>
-                {t.text}
-                <progress class="progress is-primary" value="{t.score}" max="100"></progress>
+                <strong>{t.text}:</strong> {t.score}
             </p>
         {/each}
     {/if}
