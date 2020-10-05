@@ -5,9 +5,9 @@
     let evaluation = null;
     let url = null;
     if (process.env.isProd) {
-        url = 'http://95.217.222.60:8080/legacylab';
+        url = 'http://95.217.222.60:8080/coma';
     } else {
-        url = 'http://localhost:8080/legacylab';
+        url = 'http://localhost:8080/coma';
     }
 
     function handleFetchEvaluation(event) {
@@ -34,12 +34,16 @@
 </svelte:head>
 
 <main class="section">
-    <h1 class="title is-1">Questionmate - LegacyLab</h1>
+    <h1 class="title is-1">Software Coma-Scale</h1>
     <Question on:fetchEvaluation={handleFetchEvaluation} url={url}/>
-    <Evaluation evaluation={evaluation}/>
+    <Evaluation evaluation={evaluation} url={url}/>
+    <hr>
     <div class="content">
         <p class="pt-2">
             API Base URL: {url}
+        </p>
+        <p class="pt-2">
+            This survey is driven by <a href="https://github.com/rwirdemann/questionmate">Questionmate</a>
         </p>
     </div>
 </main>
