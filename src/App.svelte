@@ -1,6 +1,6 @@
 <script>
     import Question from "./Question.svelte";
-    import Evaluation from "./Evaluation.svelte";
+    import Assessment from "./Assessment.svelte";
 
     let evaluation = null;
     let url = null;
@@ -15,7 +15,7 @@
     }
 
     async function getEvaluation(answers) {
-        const response = await fetch(url + "/evaluations", {
+        const response = await fetch(url + "/assessment", {
             method: "POST",
             body: JSON.stringify(answers)
         });
@@ -36,7 +36,7 @@
 <main class="section">
     <h1 class="title is-1">Software Coma-Scale</h1>
     <Question on:fetchEvaluation={handleFetchEvaluation} url={url}/>
-    <Evaluation evaluation={evaluation} url={url}/>
+    <Assessment evaluation={evaluation} url={url}/>
     <hr>
     <div class="content">
         <p class="pt-2">
