@@ -12,8 +12,13 @@
     {#if targets !== null}
         {#each targets as t}
             <p>
-                <strong>{t.text}:</strong> {t.score}
+                <strong>{t.text}:</strong> {t.score}                
             </p>
+            {#if t.rating != null && t.rating != ""} 
+            <p>
+                {t.rating}                
+            </p>
+            {/if}
         {/each}
     {/if}
 </targets>
