@@ -54,7 +54,7 @@
 
 <question class="content">
     {#if question !== null}
-        <h3 class="title is-6">{question.text}</h3>
+        <h3 class="title is-6">Frage: {question.text}</h3>
         {#if question.desc !== null && question.desc !== ""}
             <!-- svelte-ignore a11y-missing-attribute -->
             <a hidden='{!descVisible}' on:click={toggleDescVisible}>Erklärung der Frage...</a>
