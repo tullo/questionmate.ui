@@ -59,7 +59,7 @@
             API Base URL: {url}
         </p>
         <p class="pt-2">
-            This survey is driven by <a href="https://github.com/rwirdemann/questionmate">Questionmate</a>
+            This survey is driven by <a href="https://github.com/tullo/questionmate">Questionmate</a>
         </p>
     </div>
 </main>
